@@ -21,5 +21,11 @@ class MascotaTest {
 	        String nombre = mascota.getNombre();
 	        assertEquals("toby", nombre);
 	    }
+	    
+	    @Test
+	    void testGetTipo() {
+	    	String tipo = mascota.getTipo();
+	    	assertEquals("perro", tipo);
+	    }
 	
 }
