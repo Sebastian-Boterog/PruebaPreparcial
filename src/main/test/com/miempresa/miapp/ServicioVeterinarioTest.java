@@ -38,7 +38,34 @@ class ServicioVeterinarioTest {
 		double promedio = servicio.calcularEdadPromedioMascotas();
 		assertEquals(promedio, 0);
 
-	} 
+	}
+	
+	@Test
+	void TestEsMascotaRegistradaConMascotaRegistrada() {
+		String nombreMascota = "Pepe";
+		Mascota mascota = new Mascota(nombreMascota, "perro", 5);
+
+		Veterinario mockVeterinario = Mockito.mock(Veterinario.class);
+		Mockito.when(mockVeterinario.buscarMascotaPorNombre(nombreMascota)).thenReturn(mascota);
+
+		ServicioVeterinario servicio = new ServicioVeterinario(mockVeterinario);
+		boolean estaRegistrada = servicio.esMascotaRegistrada(nombreMascota);
+
+		assertTrue(estaRegistrada);
+	}
+
+	@Test
+	void TestEsMascotaRegistradaConMascotaNoRegistrada() {
+		String nombreMascota = "Pepe";
+
+		Veterinario mockVeterinario = Mockito.mock(Veterinario.class);
+		Mockito.when(mockVeterinario.buscarMascotaPorNombre(nombreMascota)).thenReturn(null);
+
+		ServicioVeterinario servicio = new ServicioVeterinario(mockVeterinario);
+		boolean estaRegistrada = servicio.esMascotaRegistrada(nombreMascota);
+
+		assertFalse(estaRegistrada);
+	}
 	
 
 }
