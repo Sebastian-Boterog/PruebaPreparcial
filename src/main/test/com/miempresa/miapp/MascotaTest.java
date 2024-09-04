@@ -27,5 +27,11 @@ class MascotaTest {
 	    	String tipo = mascota.getTipo();
 	    	assertEquals("perro", tipo);
 	    }
+	    
+	    @Test
+	    void testGetEdad() {
+	    	int edad = mascota.getEdad();
+	    	assertEquals(10, edad);
+	    }
 	
 }
