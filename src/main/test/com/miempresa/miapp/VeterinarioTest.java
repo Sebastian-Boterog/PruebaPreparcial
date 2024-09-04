@@ -35,20 +35,19 @@ class VeterinarioTest {
     
     @Test
     void testBuscarMascotaPorNombre() {
-        // Crear y agregar mascotas
         Mascota mascota1 = new Mascota("Rex", "perro", 4);
         Mascota mascota2 = new Mascota("Lupe", "gato", 3);
         veterinario.agregarMascota(mascota1);
         veterinario.agregarMascota(mascota2);
 
-        // Buscar una mascota existente
         Mascota resultado = veterinario.buscarMascotaPorNombre("Rex");
         assertNotNull(resultado, "La mascota debería ser encontrada");
         assertEquals("Rex", resultado.getNombre(), "El nombre de la mascota debería ser Rex");
 
-        // Buscar una mascota no existente
         resultado = veterinario.buscarMascotaPorNombre("Toby");
         assertNull(resultado, "La mascota no debería ser encontrada");
     }
+    
+    
 
 }
