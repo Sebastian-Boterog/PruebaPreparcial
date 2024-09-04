@@ -67,5 +67,30 @@ class ServicioVeterinarioTest {
 		assertFalse(estaRegistrada);
 	}
 	
+	@Test
+	void TestEsMascotaRegistradaConNombreNulo() {
+		Veterinario mockVeterinario = Mockito.mock(Veterinario.class);
+		ServicioVeterinario servicio = new ServicioVeterinario(mockVeterinario);
+
+		Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+			servicio.esMascotaRegistrada(null);
+		});
+
+		assertEquals("No se admiten nombres nulos", exception.getMessage());
+	}
+
+	@Test
+	void TestRegistrarMascota() {
+		Mascota mascota = new Mascota("Pepe", "perro", 5);
+
+		Veterinario mockVeterinario = Mockito.mock(Veterinario.class);
+		ServicioVeterinario servicio = new ServicioVeterinario(mockVeterinario);
+
+		servicio.registrarMascota(mascota);
+
+		Mockito.verify(mockVeterinario).agregarMascota(mascota);
+	}
+	
+	
 
 }
