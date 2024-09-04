@@ -91,6 +91,14 @@ class ServicioVeterinarioTest {
 		Mockito.verify(mockVeterinario).agregarMascota(mascota);
 	}
 	
+	@Test
+	void TestHorariosAtencion() {
+		Veterinario mockVeterinario = Mockito.mock(Veterinario.class);
+		ServicioVeterinario servicio = new ServicioVeterinario(mockVeterinario);
+
+		String horarios = servicio.horariosAtencion();
+		assertEquals("Domingo a domingo 24 horas", horarios);
+	}
 	
 
 }
